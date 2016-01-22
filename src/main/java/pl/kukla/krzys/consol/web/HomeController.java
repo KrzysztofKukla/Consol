@@ -1,4 +1,4 @@
-package pl.kukla.krzys;
+package pl.kukla.krzys.consol.web;
 
 import java.text.DateFormat;
 import java.util.Date;
