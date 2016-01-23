@@ -2,7 +2,6 @@ package pl.kukla.krzys.consol.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-
 /**
  * Main initializer class for web application
  *  
@@ -16,8 +15,7 @@ public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherSe
 	 */
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Class<?>[]{HibernateConfiguration.class};
 	}
 
 	/**
