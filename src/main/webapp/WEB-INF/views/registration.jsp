@@ -32,16 +32,19 @@
 <form:form id="registrationForm" action="." modelAttribute="account" >
 <table>
 	<tr>
+		<td><form:errors path="*"></form:errors></td>
+	</tr>
+	<tr>
 		<td>${login}</td>
-		<td><input type="text" id="loginInput" name="loginInput" /></td>
+		<td><form:input id="login" name="login" path="login" /></td>
 	</tr>
 	<tr>
 		<td>${password}</td>
-		<td><input type="password" id="passwordInput" name="passwordInput" /></td>
+		<td><form:password id="password" name="password" path="password" /></td>
 	</tr>	
 	<tr>
 		<td>${confirmPassword}</td>
-		<td><input type="password" id="confirmPasswordInput" name="confirmPasswordInput" /></td>
+		<td><form:password id="confirmPassword" name="confirmPassword" path="confirmPassword" /></td>
 	</tr>	
 	<tr>
 		<td colspan="2"><input type="submit" value="${register}"/></td>
@@ -53,38 +56,38 @@
 </html>
 
 <script type="text/javascript">
-var loginInput = $("#loginInput");
+var login = $("#login");
 var freeLogin = true;
 $(document).ready(function(){
 	var registrationForm=$("#registrationForm");
 	registrationForm.validate({
 		rules:{
-			loginInput:{
+			login:{
 				required: true,
 				minlength: 6,
 				alphanumeric: true,
 				freeLogin: true,
 			},
-			passwordInput:{
+			password:{
 				required: true,
 				minlength: 8,
 				digitUppercaseLowercase : true,
 			},
-			confirmPasswordInput:{
+			confirmPassword:{
 				required: true,
-				equalTo : "#passwordInput",
+				equalTo : "#password",
 			}
 		},
 		messages:{
-			loginInput:{
+			login:{
 				required: '${requiredField}',
 				minlength: '${minLength}',
 			},
-			passwordInput:{
+			password:{
 				required: '${requiredField}',
 				minlength: '${minLength}',
 			},
-			confirmPasswordInput:{
+			confirmPassword:{
 				required: '${requiredField}',
 				equalTo : '${samePasswords}',
 			}
@@ -93,20 +96,8 @@ $(document).ready(function(){
 			error.insertAfter(element);
 		},
 		submitHandler: function(form){
-			/*$.ajax({
-				type: 'POST',
-				url: '${saveUser}/'+loginInput.val(),
-				contentType: "application/json",
-				success: function(data){
-					alert('${registerSuccess}');
-				},
-				error: function(data){
-					alert("error");
-				},
-				dataType: 'json',
-			})*/
-			alert("jest ok");
 			form.submit();
+			alert('${registerSuccess}');
 		}
 	});
 });
@@ -118,7 +109,7 @@ jQuery.validator.addMethod("alphanumeric", function(value, element) {
 jQuery.validator.addMethod("freeLogin", function(value, element){
 		$.ajax({
 			type: 'GET',
-			url: '${checkUser}/'+loginInput.val(),
+			url: '${checkUser}/'+login.val(),
 			contentType: "application/json",
 			success: function(data){
 				freeLogin = data;
