@@ -52,7 +52,7 @@ public class HibernateConfiguration {
 		prop.put("hibernate.dialect", org.hibernate.dialect.PostgreSQL94Dialect.class.getName());
 		prop.put("hibernate.show_sql", true);
 		
-		// in real application this should be disabled
+		// in production mode application this should be removed
 		prop.put("hibernate.hbm2ddl.auto", "update");
 		return prop;
 	}
