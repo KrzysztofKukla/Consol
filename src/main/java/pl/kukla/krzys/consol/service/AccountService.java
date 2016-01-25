@@ -1,5 +1,9 @@
 package pl.kukla.krzys.consol.service;
 
+import org.springframework.validation.BindingResult;
+
+import pl.kukla.krzys.consol.model.Account;
+
 /**
  * Service for Account
  * 
@@ -19,10 +23,10 @@ public interface AccountService {
 	 * Registration new user
 	 * <br/> This method returns true if registration is successful or false if not
 	 * 
-	 * @param login
-	 * @param password
+	 * @param account
+	 * @param result
 	 * 
 	 * return true or false
 	 */
-	boolean registration(String login, String password);
+	boolean register(Account account, BindingResult result);
 }

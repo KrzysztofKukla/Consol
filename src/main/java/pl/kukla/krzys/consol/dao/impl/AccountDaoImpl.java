@@ -17,8 +17,7 @@ public class AccountDaoImpl extends AbstractDao<Account> implements AccountDao{
 
 	@Override
 	public boolean exist(String login) {
-		if (criteria().add(Restrictions.eq("login", login)).uniqueResult()!=null) return true;
-		return false;
+		return criteria().add(Restrictions.eq("login", login)).uniqueResult()!=null ? true : false;
 	}
 
 
