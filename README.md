@@ -1,2 +1,2 @@
-# Consol
+# Registration
 Registration of user
